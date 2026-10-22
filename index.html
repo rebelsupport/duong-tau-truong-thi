@@ -254,10 +254,11 @@
 
     const map = L.map('map').setView([20.4350, 106.1775], 14);
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      maxZoom: 19, subdomains: 'abcd',
-      attribution: '© OpenStreetMap & CartoDB | Cổng TTĐT Phường Trường Thi'
-    }).addTo(map);
+      // Sử dụng bản đồ nền tiêu chuẩn OpenStreetMap (Hoạt động hoàn hảo trên GitHub Pages)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '© OpenStreetMap | Cổng thông tin Phường Trường Thi'
+}).addTo(map);
 
     let markersLayer = L.layerGroup().addTo(map);
 
