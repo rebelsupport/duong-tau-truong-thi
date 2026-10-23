@@ -2,8 +2,8 @@
   {
     "id": "1792755784893",
     "name": "Ngã 5 Văn Cao",
-    "lat": 20.414387,
-    "lng": 106.16274,
+    "lat": 20.414284,
+    "lng": 106.162852,
     "type": "Có gác ghi",
     "status": "green",
     "note": ""
@@ -11,8 +11,8 @@
   {
     "id": "1792755977055",
     "name": "Chợ Gạo ra QL10",
-    "lat": 20.375711,
-    "lng": 106.134195,
+    "lat": 20.367115,
+    "lng": 106.131106,
     "type": "Lối đã được đóng",
     "status": "gray",
     "note": ""
@@ -38,8 +38,8 @@
   {
     "id": "1792766182241",
     "name": "Ngã 4 QL10 485B - Km94+250",
-    "lat": 20.367107,
-    "lng": 106.130796,
+    "lat": 20.364362,
+    "lng": 106.128831,
     "type": "Có gác ghi",
     "status": "green",
     "note": ""
@@ -64,9 +64,9 @@
   },
   {
     "id": "1792766702746",
-    "name": "Đối diện Đảng ủy",
-    "lat": 20.412571,
-    "lng": 106.160827,
+    "name": "Đối diện Đảng ủy - HĐND phường Trường Thi",
+    "lat": 20.410834,
+    "lng": 106.158936,
     "type": "Lối dân tự mở - nguy hiểm",
     "status": "red",
     "note": ""
@@ -74,8 +74,8 @@
   {
     "id": "1792766798099",
     "name": "Nghĩa trang Giáo xứ Trình Xuyên",
-    "lat": 20.370023,
-    "lng": 106.132274,
+    "lat": 20.365669,
+    "lng": 106.129926,
     "type": "Lối dân tự mở - nguy hiểm",
     "status": "red",
     "note": ""
