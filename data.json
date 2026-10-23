@@ -11,10 +11,46 @@
   {
     "id": "1792755977055",
     "name": "Chợ Gạo ra QL10",
-    "lat": 20.367004,
-    "lng": 106.130763,
+    "lat": 20.375711,
+    "lng": 106.134195,
     "type": "Lối đã được đóng",
     "status": "yellow",
+    "note": ""
+  },
+  {
+    "id": "1792766038905",
+    "name": "Ngã 4 Tổ Cầu - Km 95+812 ",
+    "lat": 20.353868,
+    "lng": 106.119174,
+    "type": "Có gác ghi",
+    "status": "green",
+    "note": ""
+  },
+  {
+    "id": "1792766095138",
+    "name": "Đường vào CTY Giống Nông nghiệp - Km 95+075",
+    "lat": 20.358812,
+    "lng": 106.123805,
+    "type": "Có gác ghi",
+    "status": "green",
+    "note": ""
+  },
+  {
+    "id": "1792766182241",
+    "name": "Ngã 4 QL10 485B - Km94+250",
+    "lat": 20.367107,
+    "lng": 106.130796,
+    "type": "Có gác ghi",
+    "status": "green",
+    "note": ""
+  },
+  {
+    "id": "1792766247473",
+    "name": "Ngã 3 Ba Quàn - Km90+931",
+    "lat": 20.390323,
+    "lng": 106.144042,
+    "type": "Có gác ghi",
+    "status": "green",
     "note": ""
   }
 ]
