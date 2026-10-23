@@ -52,5 +52,32 @@
     "type": "Có gác ghi",
     "status": "green",
     "note": ""
+  },
+  {
+    "id": "1792766610306",
+    "name": "Cổng chào Lộng Đồng - Km88+500",
+    "lat": 20.40868,
+    "lng": 106.156715,
+    "type": "Có gác ghi",
+    "status": "green",
+    "note": ""
+  },
+  {
+    "id": "1792766702746",
+    "name": "Đối diện Đảng ủy",
+    "lat": 20.412571,
+    "lng": 106.160827,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1792766798099",
+    "name": "Nghĩa trang Giáo xứ Trình Xuyên",
+    "lat": 20.370023,
+    "lng": 106.132274,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
   }
 ]
