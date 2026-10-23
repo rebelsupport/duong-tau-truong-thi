@@ -66,7 +66,8 @@
     }
     .bg-green { background: #10b981; }  /* Có gác ghi */
     .bg-red { background: #ef4444; }    /* Lối dân tự mở - nguy hiểm */
-    .bg-yellow { background: #f59e0b; } /* Lối đã được đóng */
+    .bg-yellow { background: #f59e0b; } /* Tự mở - có người cảnh giới */
+    .bg-gray { background: #6b7280; }   /* Lối đã được đóng */
 
     /* Legend Box Thu gọn được */
     .legend-box {
@@ -130,8 +131,9 @@
       </div>
       <div class="legend-content" id="legendContent">
         <div class="legend-item"><span class="legend-dot" style="background:#10b981;"></span> Có gác ghi</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span> Lối dân tự mở - có người cảnh giới</div>
         <div class="legend-item"><span class="legend-dot" style="background:#ef4444;"></span> Lối dân tự mở - nguy hiểm</div>
-        <div class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span> Lối đã được đóng</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#6b7280;"></span> Lối đã được đóng</div>
       </div>
     </div>
   </div>
@@ -141,11 +143,15 @@
     const map = L.map('map', { zoomControl: false }).setView([20.381307, 106.135650], 13);
     L.control.zoom({ position: 'topright' }).addTo(map);
 
-    // Bản đồ nền Esri ổn định, mượt mà trên mọi thiết bị
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-      maxZoom: 19,
-      attribution: 'Esri & Công an Phường Trường Thi'
-    }).addTo(map);
+    // Bản đồ nền OpenStreetMap (cập nhật liên tục) + ảnh vệ tinh Esri
+    const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> | <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener">Báo lỗi bản đồ</a>'
+}).addTo(map);
+const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  maxZoom: 19, attribution: 'Ảnh vệ tinh: Esri'
+});
+L.control.layers({ 'Bản đồ đường phố': osm, 'Ảnh vệ tinh': sat }, null, { position: 'topright' }).addTo(map);
 
     let markersLayer = L.layerGroup().addTo(map);
 
@@ -165,7 +171,7 @@
       const defaultData = [
         { id: "1", name: "Đường ngang Km94+250", lat: 20.4425, lng: 106.1850, type: "Có gác ghi", status: "green", note: "Đang mở thông thoáng, nhân viên trực đầy đủ." },
         { id: "2", name: "Lối đi tự mở Km94+800", lat: 20.4350, lng: 106.1770, type: "Lối dân tự mở - nguy hiểm", status: "red", note: "Khu vực khuất tầm nhìn, cần chú ý quan sát kỹ." },
-        { id: "3", name: "Đường ngang Điện Biên", lat: 20.4280, lng: 106.1700, type: "Lối đã được đóng", status: "yellow", note: "Đã rào chắn cố định, cấm qua lại." }
+        { id: "3", name: "Đường ngang Điện Biên", lat: 20.4280, lng: 106.1700, type: "Lối đã được đóng", status: "gray", note: "Đã rào chắn cố định, cấm qua lại." }
       ];
 
       let data = defaultData;
@@ -183,7 +189,8 @@
         let colorClass = "bg-green";
 
         if(item.status === 'red') { statusText = "NGUY HIỂM (TỰ MỞ)"; badgeBg = "#ef4444"; icon = "fa-triangle-exclamation"; colorClass = "bg-red"; }
-        if(item.status === 'yellow') { statusText = "ĐÃ ĐÓNG"; badgeBg = "#f59e0b"; icon = "fa-ban"; colorClass = "bg-yellow"; }
+        if(item.status === 'yellow') { statusText = "TỰ MỞ - CÓ CẢNH GIỚI"; badgeBg = "#f59e0b"; icon = "fa-user-shield"; colorClass = "bg-yellow"; item.type = "Lối dân tự mở - có người cảnh giới"; }
+        if(item.status === 'gray') { statusText = "ĐÃ ĐÓNG"; badgeBg = "#6b7280"; icon = "fa-ban"; colorClass = "bg-gray"; item.type = "Lối đã được đóng"; }
 
         // Sidebar card
         const card = document.createElement('div');

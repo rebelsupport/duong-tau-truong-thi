@@ -41,7 +41,7 @@ header{background:linear-gradient(135deg,#990000,#660000);padding:8px 12px;displ
 #map.adding{cursor:crosshair}
 .mk{display:flex;justify-content:center;align-items:center;width:36px;height:36px;border-radius:50%;color:#fff;font-size:15px;border:2px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.5)}
 .mk.sel{outline:3px solid #ffde00}
-.bg-green{background:#10b981}.bg-red{background:#ef4444}.bg-yellow{background:#f59e0b}
+.bg-green{background:#10b981}.bg-red{background:#ef4444}.bg-yellow{background:#f59e0b}.bg-gray{background:#6b7280}
 .panel{position:absolute;z-index:1003;right:12px;bottom:12px;width:min(320px,calc(100% - 24px));background:rgba(15,23,42,.97);border:1px solid #475569;border-radius:12px;padding:12px;box-shadow:0 10px 25px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:8px}
 .panel-h{display:flex;justify-content:space-between;align-items:center;color:#38bdf8;font-size:.85rem}
 .x{cursor:pointer;padding:4px}
@@ -90,8 +90,9 @@ textarea{resize:vertical}
     <label>Trạng thái
       <select id="fStatus">
         <option value="green">Có gác ghi</option>
+        <option value="yellow">Lối dân tự mở - có người cảnh giới</option>
         <option value="red">Lối dân tự mở - nguy hiểm</option>
-        <option value="yellow">Lối đã được đóng</option>
+        <option value="gray">Lối đã được đóng</option>
       </select>
     </label>
     <div class="row">
@@ -125,14 +126,15 @@ textarea{resize:vertical}
 
 <script>
 const ST = {
-  green:  { t: 'Có gác ghi',               l: 'CÓ GÁC GHI',        c: '#10b981', i: 'fa-shield-halved',        k: 'bg-green' },
-  red:    { t: 'Lối dân tự mở - nguy hiểm', l: 'NGUY HIỂM (TỰ MỞ)', c: '#ef4444', i: 'fa-triangle-exclamation', k: 'bg-red' },
-  yellow: { t: 'Lối đã được đóng',          l: 'ĐÃ ĐÓNG',           c: '#f59e0b', i: 'fa-ban',                  k: 'bg-yellow' }
+  green:  { t: 'Có gác ghi',                         l: 'CÓ GÁC GHI',           c: '#10b981', i: 'fa-shield-halved',        k: 'bg-green' },
+  yellow: { t: 'Lối dân tự mở - có người cảnh giới',  l: 'TỰ MỞ - CÓ CẢNH GIỚI',  c: '#f59e0b', i: 'fa-user-shield',          k: 'bg-yellow' },
+  red:    { t: 'Lối dân tự mở - nguy hiểm',           l: 'NGUY HIỂM (TỰ MỞ)',     c: '#ef4444', i: 'fa-triangle-exclamation', k: 'bg-red' },
+  gray:   { t: 'Lối đã được đóng',                    l: 'ĐÃ ĐÓNG',               c: '#6b7280', i: 'fa-ban',                  k: 'bg-gray' }
 };
 const DEFAULT = [
   { id: "1", name: "Đường ngang Km94+250", lat: 20.4425, lng: 106.1850, type: "Có gác ghi", status: "green", note: "Đang mở thông thoáng, nhân viên trực đầy đủ." },
   { id: "2", name: "Lối đi tự mở Km94+800", lat: 20.4350, lng: 106.1770, type: "Lối dân tự mở - nguy hiểm", status: "red", note: "Khu vực khuất tầm nhìn, cần chú ý quan sát kỹ." },
-  { id: "3", name: "Đường ngang Điện Biên", lat: 20.4280, lng: 106.1700, type: "Lối đã được đóng", status: "yellow", note: "Đã rào chắn cố định, cấm qua lại." }
+  { id: "3", name: "Đường ngang Điện Biên", lat: 20.4280, lng: 106.1700, type: "Lối đã được đóng", status: "gray", note: "Đã rào chắn cố định, cấm qua lại." }
 ];
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
@@ -140,9 +142,14 @@ let data = [], sel = null, dirty = false, adding = false;
 
 const map = L.map('map', { zoomControl: false }).setView([20.381307, 106.135650], 13);
 L.control.zoom({ position: 'topright' }).addTo(map);
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-  maxZoom: 19, attribution: 'Esri & Công an Phường Trường Thi'
+const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> | <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener">Báo lỗi bản đồ</a>'
 }).addTo(map);
+const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  maxZoom: 19, attribution: 'Ảnh vệ tinh: Esri'
+});
+L.control.layers({ 'Bản đồ đường phố': osm, 'Ảnh vệ tinh': sat }, null, { position: 'topright' }).addTo(map);
 const layer = L.layerGroup().addTo(map);
 
 /* ---------- Cấu hình GitHub (lưu ở trình duyệt của admin) ---------- */
