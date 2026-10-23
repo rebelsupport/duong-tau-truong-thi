@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1792755784893",
+    "name": "Ngã 5 Văn Cao",
+    "lat": 20.414387,
+    "lng": 106.16274,
+    "type": "Có gác ghi",
+    "status": "green",
+    "note": ""
+  },
+  {
+    "id": "1792755977055",
+    "name": "Chợ Gạo ra QL10",
+    "lat": 20.367004,
+    "lng": 106.130763,
+    "type": "Lối đã được đóng",
+    "status": "yellow",
+    "note": ""
+  }
+]
