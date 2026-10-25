@@ -92,7 +92,13 @@
       .sidebar { transform: translateX(0) !important; position: relative; width: 320px !important; }
       .mobile-toggle-btn { display: none; }
     }
-  </style>
+  
+.crossing-label.leaflet-tooltip{background:transparent;border:0;box-shadow:none;padding:0;opacity:1;white-space:nowrap;font-size:11px;font-weight:700;color:#1e293b;text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff,0 0 3px #fff}
+.crossing-label.leaflet-tooltip::before{display:none}
+.no-labels .crossing-label{display:none}
+.locate-btn{display:block;width:34px;height:34px;border:0;background:#fff;color:#2563eb;font-size:16px;cursor:pointer;border-radius:2px}
+.me-dot{width:18px;height:18px;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 0 0 2px rgba(37,99,235,.35),0 2px 6px rgba(0,0,0,.4)}
+</style>
 </head>
 <body>
 
@@ -110,12 +116,12 @@
   <div class="main-container">
     <!-- Nút mở Danh sách các điểm đường ngang qua đường tàu tuyến QL10 - Địa bàn phường Trường Thi ở góc trên bên trái -->
     <button class="mobile-toggle-btn" onclick="toggleSidebar()">
-      <i class="fa-solid fa-list"></i> Danh sách các điểm đường ngang
+      <i class="fa-solid fa-list"></i> Danh sách các điểm đường ngang qua đường tàu tuyến QL10 - Địa bàn phường Trường Thi
     </button>
 
     <div class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <span><i class="fa-solid fa-train-subway"></i> Danh sách các điểm đường ngang </span>
+        <span><i class="fa-solid fa-train-subway"></i> Danh sách các điểm đường ngang qua đường tàu tuyến QL10 - Địa bàn phường Trường Thi</span>
         <i class="fa-solid fa-xmark" style="cursor:pointer; font-size: 1rem;" onclick="toggleSidebar()"></i>
       </div>
       <div class="crossing-list" id="crossingList"></div>
@@ -152,6 +158,34 @@ const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Wo
   maxZoom: 19, attribution: 'Ảnh vệ tinh: Esri'
 });
 L.control.layers({ 'Bản đồ đường phố': osm, 'Ảnh vệ tinh': sat }, null, { position: 'topright' }).addTo(map);
+/* Nhãn tên điểm: chỉ hiện khi phóng to từ mức này trở lên (đặt 0 để luôn hiện) */
+const LABEL_ZOOM = 14;
+function updLabels() { document.getElementById('map').classList.toggle('no-labels', map.getZoom() < LABEL_ZOOM); }
+map.on('zoomend', updLabels); updLabels();
+
+/* Nút "Vị trí của tôi" */
+let meMarker = null, meCircle = null, firstFix = false;
+const LocateCtl = L.Control.extend({
+  options: { position: 'topright' },
+  onAdd() {
+    const box = L.DomUtil.create('div', 'leaflet-bar');
+    const b = L.DomUtil.create('button', 'locate-btn', box);
+    b.type = 'button'; b.title = 'Vị trí của tôi'; b.setAttribute('aria-label', 'Vị trí của tôi');
+    b.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i>';
+    L.DomEvent.disableClickPropagation(box);
+    b.onclick = () => { map.stopLocate(); firstFix = true; map.locate({ watch: true, enableHighAccuracy: true }); };
+    return box;
+  }
+});
+map.addControl(new LocateCtl());
+map.on('locationfound', e => {
+  if (!meMarker) {
+    meCircle = L.circle(e.latlng, { radius: e.accuracy, color: '#2563eb', weight: 1, fillOpacity: .12, interactive: false }).addTo(map);
+    meMarker = L.marker(e.latlng, { icon: L.divIcon({ className: '', html: '<div class="me-dot"></div>', iconSize: [18, 18], iconAnchor: [9, 9] }), zIndexOffset: 1000, interactive: false }).addTo(map);
+  } else { meMarker.setLatLng(e.latlng); meCircle.setLatLng(e.latlng).setRadius(e.accuracy); }
+  if (firstFix) { firstFix = false; map.setView(e.latlng, Math.max(map.getZoom(), 16)); }
+});
+map.on('locationerror', () => { map.stopLocate(); alert('Không lấy được vị trí. Hãy bật định vị (GPS) và cho phép trình duyệt truy cập vị trí.'); });
 
     let markersLayer = L.layerGroup().addTo(map);
 
@@ -225,6 +259,8 @@ L.control.layers({ 'Bản đồ đường phố': osm, 'Ảnh vệ tinh': sat },
             <p style="font-size:0.72rem; color:#cbd5e1; border-top:1px dashed #334155; margin-top:4px; padding-top:4px;">${item.note || ''}</p>
           </div>
         `);
+        const lbl = document.createElement('span'); lbl.textContent = (item.name || '').trim();
+        marker.bindTooltip(lbl, { permanent: true, direction: 'right', offset: [22, 0], className: 'crossing-label' });
         markersLayer.addLayer(marker);
       });
     }
