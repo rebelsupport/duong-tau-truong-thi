@@ -148,9 +148,10 @@ let data = [], sel = null, dirty = false, adding = false;
 
 const map = L.map('map', { zoomControl: false }).setView([20.381307, 106.135650], 13);
 L.control.zoom({ position: 'topright' }).addTo(map);
-const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+const osm = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
   maxZoom: 19,
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> | <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener">Báo lỗi bản đồ</a>'
+  subdomains: 'abcd',
+  attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
 }).addTo(map);
 const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
   maxZoom: 19, attribution: 'Ảnh vệ tinh: Esri'
