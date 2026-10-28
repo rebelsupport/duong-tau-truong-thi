@@ -9,15 +9,6 @@
     "note": ""
   },
   {
-    "id": "1792755977055",
-    "name": "Chợ Gạo ra QL10",
-    "lat": 20.367115,
-    "lng": 106.131106,
-    "type": "Lối đã được đóng",
-    "status": "gray",
-    "note": ""
-  },
-  {
     "id": "1792766038905",
     "name": "Ngã 4 Tổ Cầu - Km 95+812 ",
     "lat": 20.353868,
@@ -63,21 +54,300 @@
     "note": ""
   },
   {
-    "id": "1792766702746",
-    "name": "Đối diện Đảng ủy - HĐND phường Trường Thi",
-    "lat": 20.404676,
-    "lng": 106.154092,
+    "id": "1792766798099",
+    "name": "Nghĩa trang Giáo xứ Trình Xuyên Km94+110",
+    "lat": 20.365669,
+    "lng": 106.129926,
     "type": "Lối dân tự mở - nguy hiểm",
     "status": "red",
     "note": ""
   },
   {
-    "id": "1792766798099",
-    "name": "Nghĩa trang Giáo xứ Trình Xuyên",
-    "lat": 20.365669,
-    "lng": 106.129926,
+    "id": "1793153458319",
+    "name": "Trần Huy Liệu",
+    "lat": 20.418818,
+    "lng": 106.164628,
+    "type": "Có gác ghi",
+    "status": "green",
+    "note": ""
+  },
+  {
+    "id": "1793153499319",
+    "name": "Giải Phóng",
+    "lat": 20.428285,
+    "lng": 106.160318,
+    "type": "Có gác ghi",
+    "status": "green",
+    "note": ""
+  },
+  {
+    "id": "1793153565491",
+    "name": "Km88+555",
+    "lat": 20.408323,
+    "lng": 106.15644,
     "type": "Lối dân tự mở - nguy hiểm",
     "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793153654954",
+    "name": "Km88+588",
+    "lat": 20.408189,
+    "lng": 106.15634,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793153672788",
+    "name": "Km 88+613",
+    "lat": 20.408063,
+    "lng": 106.156254,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793153718292",
+    "name": "Km88+660",
+    "lat": 20.407806,
+    "lng": 106.156093,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793153746424",
+    "name": "Km 88+685",
+    "lat": 20.407503,
+    "lng": 106.155859,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793153834980",
+    "name": "Km 88+714",
+    "lat": 20.407072,
+    "lng": 106.155556,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793153851257",
+    "name": "Km88+721",
+    "lat": 20.406947,
+    "lng": 106.155455,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793153877375",
+    "name": "Km88+820",
+    "lat": 20.406154,
+    "lng": 106.155024,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793153911421",
+    "name": "Km 88+887",
+    "lat": 20.40573,
+    "lng": 106.1548,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793153959649",
+    "name": "Đối diện Đảng uỷ Km89+030",
+    "lat": 20.404592,
+    "lng": 106.154135,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793154032736",
+    "name": "Lối đi vào Lộc An 1 Km 89+076",
+    "lat": 20.404233,
+    "lng": 106.153983,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793154212002",
+    "name": "Km89+138",
+    "lat": 20.403737,
+    "lng": 106.153632,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793154233884",
+    "name": "Km 89+163",
+    "lat": 20.403456,
+    "lng": 106.153525,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793154269937",
+    "name": "Hưng Thịnh Km89+530",
+    "lat": 20.402671,
+    "lng": 106.152964,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793154319561",
+    "name": "Km 89+414",
+    "lat": 20.401493,
+    "lng": 106.152386,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793154360663",
+    "name": "Đã đóng 2 lối đi",
+    "lat": 20.404434,
+    "lng": 106.15406,
+    "type": "Lối đã được đóng",
+    "status": "gray",
+    "note": ""
+  },
+  {
+    "id": "1793154439517",
+    "name": "Đã đóng 3 lối đi ",
+    "lat": 20.402539,
+    "lng": 106.152912,
+    "type": "Lối đã được đóng",
+    "status": "gray",
+    "note": ""
+  },
+  {
+    "id": "1793154493389",
+    "name": "Đã đóng 1 lối đi",
+    "lat": 20.401218,
+    "lng": 106.152211,
+    "type": "Lối đã được đóng",
+    "status": "gray",
+    "note": ""
+  },
+  {
+    "id": "1793154546612",
+    "name": "Km 89+530",
+    "lat": 20.400478,
+    "lng": 106.151751,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793154565235",
+    "name": "Km 89+595",
+    "lat": 20.400092,
+    "lng": 106.151506,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793154592071",
+    "name": "Km 89+795",
+    "lat": 20.39851,
+    "lng": 106.150625,
+    "type": "Lối dân tự mở - có người cảnh giới",
+    "status": "yellow",
+    "note": ""
+  },
+  {
+    "id": "1793154666693",
+    "name": "Xe máy Trường Sơn Km 89+880",
+    "lat": 20.39799,
+    "lng": 106.150321,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793154699424",
+    "name": "Đã đóng 4 lối đi ",
+    "lat": 20.397829,
+    "lng": 106.150235,
+    "type": "Lối đã được đóng",
+    "status": "gray",
+    "note": ""
+  },
+  {
+    "id": "1793154760553",
+    "name": "Km 90+472",
+    "lat": 20.393613,
+    "lng": 106.14688,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793154802898",
+    "name": "PQA Km90+710",
+    "lat": 20.392014,
+    "lng": 106.145514,
+    "type": "Có gác ghi",
+    "status": "green",
+    "note": ""
+  },
+  {
+    "id": "1793154919218",
+    "name": "Km92+500",
+    "lat": 20.378754,
+    "lng": 106.135331,
+    "type": "Có gác ghi",
+    "status": "green",
+    "note": ""
+  },
+  {
+    "id": "1793154987630",
+    "name": "Rẽ Dương Lai Km 90+870",
+    "lat": 20.375619,
+    "lng": 106.134249,
+    "type": "Có gác ghi",
+    "status": "green",
+    "note": ""
+  },
+  {
+    "id": "1793155019085",
+    "name": "Km 92+920",
+    "lat": 20.374892,
+    "lng": 106.134063,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
+  },
+  {
+    "id": "1793155057950",
+    "name": "Cty Lâm Sản Km 93+575",
+    "lat": 20.369752,
+    "lng": 106.132073,
+    "type": "Có gác ghi",
+    "status": "green",
+    "note": ""
+  },
+  {
+    "id": "1793155105745",
+    "name": "Rẽ chợ Gạo",
+    "lat": 20.367038,
+    "lng": 106.130846,
+    "type": "Lối đã được đóng",
+    "status": "gray",
     "note": ""
   }
 ]
