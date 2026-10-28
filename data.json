@@ -349,5 +349,14 @@
     "type": "Lối đã được đóng",
     "status": "gray",
     "note": ""
+  },
+  {
+    "id": "1793156400710",
+    "name": "Km88+564",
+    "lat": 20.408243,
+    "lng": 106.156393,
+    "type": "Lối dân tự mở - nguy hiểm",
+    "status": "red",
+    "note": ""
   }
 ]
