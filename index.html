@@ -95,7 +95,7 @@
   
 .crossing-label.leaflet-tooltip{background:transparent;border:0;box-shadow:none;padding:0;opacity:1;white-space:nowrap;font-size:11px;font-weight:700;color:#1e293b;text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff,0 0 3px #fff}
 .crossing-label.leaflet-tooltip::before{display:none}
-.no-labels .crossing-label{display:none}
+
 .locate-btn{display:block;width:34px;height:34px;border:0;background:#fff;color:#2563eb;font-size:16px;cursor:pointer;border-radius:2px}
 .me-dot{width:18px;height:18px;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 0 0 2px rgba(37,99,235,.35),0 2px 6px rgba(0,0,0,.4)}
 </style>
@@ -153,15 +153,21 @@
     const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> | <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener">Báo lỗi bản đồ</a>'
-}).addTo(map);
+});
 const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
   maxZoom: 19, attribution: 'Ảnh vệ tinh: Esri'
-});
-L.control.layers({ 'Bản đồ đường phố': osm, 'Ảnh vệ tinh': sat }, null, { position: 'topright' }).addTo(map);
-/* Nhãn tên điểm: chỉ hiện khi phóng to từ mức này trở lên (đặt 0 để luôn hiện) */
-const LABEL_ZOOM = 14;
-function updLabels() { document.getElementById('map').classList.toggle('no-labels', map.getZoom() < LABEL_ZOOM); }
-map.on('zoomend', updLabels); updLabels();
+}).addTo(map);
+/* Khoá CARTO miễn phí (tuỳ chọn): đăng ký tại dashboard.basemaps.carto.com rồi dán vào đây
+   để có thêm lớp "CARTO Voyager (nhanh)" trong nút chọn lớp bản đồ */
+const CARTO_KEY = '';
+const esriSt = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19, attribution: 'Esri' });
+const bases = { 'Ảnh vệ tinh': sat, 'OpenStreetMap': osm, 'Esri đường phố (tải nhanh, dữ liệu cũ)': esriSt };
+if (CARTO_KEY) {
+  bases['CARTO Voyager (nhanh)'] = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=' + CARTO_KEY, {
+    maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  });
+}
+L.control.layers(bases, null, { position: 'topright' }).addTo(map);
 
 /* Nút "Vị trí của tôi" */
 let meMarker = null, meCircle = null, firstFix = false;
